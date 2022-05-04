@@ -61,7 +61,7 @@ thead {
 }
 
 td {
-  min-width: 10rem;
+  min-width: 4rem;
   padding: 0.2rem 0.5rem;
 }
 
@@ -75,6 +75,10 @@ th > .dropdown {
 tbody th {
   min-width: 5rem;
   background: #fafafa;
+}
+
+.spreadsheet__table{
+  width: auto;
 }
 
 /* Dropdown Button */

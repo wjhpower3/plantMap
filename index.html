@@ -1,46 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible"
-        content="ie=edge">
-    <link rel="stylesheet"
-        href="styles.css">
-    <link rel="shortcut icon"
-        href="img/google-sheets-logo-.png"
-        type="image/x-icon">
-    <title>Simple Spreadsheet</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keyword" content="">
+	<meta name="description" content="">
+	<meta name="author" content="Jeus | Won JunHee">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>please input the title</title>
+<!-- 
+	<link rel="icon" href="img/favicon/favicon_32.png" sizes="32x32">
+	<link rel="icon" href="img/favicon/favicon_48.png" sizes="48x48">
+	<link rel="icon" href="img/favicon/favicon_57.png" sizes="57x57">
+	<link rel="icon" href="img/favicon/favicon_72.png" sizes="72x72">
+	<link rel="icon" href="img/favicon/favicon_96.png" sizes="96x96">
+	<link rel="icon" href="img/favicon/favicon_120.png" sizes="120x120">
+	<link rel="icon" href="img/favicon/favicon_128.png" sizes="128x128">
+	<link rel="icon" href="img/favicon/favicon_144.png" sizes="144x144">
+	<link rel="icon" href="img/favicon/favicon_152.png" sizes="152x152">
+	<link rel="icon" href="img/favicon/favicon_195.png" sizes="195x195">
+	<link rel="icon" href="img/favicon/favicon_228.png" sizes="228x228">
+	 -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/07af8a896d.js" crossorigin="anonymous"></script>
+	<script defer src="js/script.js"></script>
 </head>
-
 <body>
-    <section class="title">
-        <img src="img/google-sheets-logo-.png"
-            alt="sheets"
-            class="title__logo">
-        <div class="title__text">
-            <h1 class="title__text--name">Simple Spreadsheet</h1>
-            <h3 class="title__text--description">A basic spreadsheet made with HTML5, CSS and JavaScript</h3>
-        </div>
-    </section>
-    <section class="spreadsheet">
-        <table class="spreadsheet__table"
-            id="table-main">
-            <thead class="spreadsheet__table--headers"
-                id="table-headers">
-            </thead>
-            <tbody class="spreadsheet__table--body"
-                id="table-body">
-            </tbody>
-        </table>
-    </section>
-    <section class="spreadsheet-controls">
-        <button class="reset-btn"
-            id="reset">Reset Data</button>
-    </section>
-    <script src="main.js"></script>
+	<form action="" class="loginForm">
+		<h1 class="logo"></h1>
+		<div class="flexWrap col">
+			<div class="flexWrap colCenter">
+				<label for="">
+					<i class="fa-solid fa-user"></i>
+				</label>
+				<input type="text" name="" id="" placeholder="ID">
+			</div>
+			<div class="flexWrap colCenter mt10">
+				<label for="">
+					<i class="fa-solid fa-lock"></i>
+				</label>
+				<input type="password" name="" id="" placeholder="Password">
+			</div>
+		</div>
+		<div class="flexWrap colCenter">
+			<button type="button" class="enterBtn">로그인</button>
+		</div>
+	</form>
 </body>
-
 </html>

@@ -1,0 +1,210 @@
+@charset "utf-8";
+
+.loginForm{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.loginForm label{
+  line-height: 1;
+}
+
+.loginForm label i{
+  margin-right: 1rem;
+  font-size: 3rem;
+  font-style: normal;
+  color: #1cc8b9;
+}
+
+
+.loginForm input[type=text],
+.loginForm input[type=password]{
+  width: 28.375rem;
+  height: 50px;
+  padding: 0 0 0 1rem;
+  background-color: #f0f0f0;
+  border: none; 
+  border-radius: 0;
+  font-size: 2rem;
+}
+
+.loginForm input[type=text]::placeholder,
+.loginForm input[type=password]::placeholder{
+  font-weight: bold;
+  color: #1cc8b9;
+}
+
+.loginForm .enterBtn{
+  margin-left: 1rem;
+  width: 11rem;
+  height: 11rem;
+  background-color: #1cc8b9;
+  border: none; 
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+
+
+/*********************************************
+*                    Main                    *
+*********************************************/
+.main{
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem 2rem 4rem 2rem;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.functionBtnWrap{
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.functionBtnWrap .btn{
+  width: 4rem;
+  height: 4rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+
+}
+
+.spreadsheet {
+  width: 100%;
+  height: calc(100vh - 12rem);
+  overflow: scroll;
+}
+
+
+.spreadsheet__table thead {
+  background-color: #f1f1f1;
+}
+
+.spreadsheet__table th,
+.spreadsheet__table td {
+  width: 3rem;
+  height: 3rem;
+  border: 0.5px solid #000;
+  font-size: 1.4rem;
+}
+
+.spreadsheet__table th {
+  font-weight: 500;
+}
+
+.spreadsheet__table th > .dropdown {
+  display: block;
+}
+
+.spreadsheet__table tbody th {
+  background: #fafafa;
+  border-left: 0.5px solid #000;
+}
+
+.spreadsheet__table tbody td {
+  border: 0.5px dashed #ccc;
+}
+
+.spreadsheet__table tbody td:last-child{
+  border-right: 0.5px solid #000;
+}
+
+.spreadsheet__table tbody tr:last-child td{
+  border-bottom: 0.5px solid #000;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  width: 10px;
+  height: 10px;
+  background-color: #e2e2e2d0;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 0rem 0.3rem;
+  /* /* font-size: 1.2rem; */
+  border: none;
+  cursor: pointer;
+  transition: ease 0.4s;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #d0d0d0;
+  /* visibility: visible; */
+}
+
+.dropbtn img {
+  height: 2rem;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  bottom: -60px;
+  background-color: white;
+  width: 10rem;
+  box-shadow: 0 0.5rem 0.8rem 0 rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content p {
+  color: rgb(133, 132, 132);
+  padding: 0.4rem;
+  font-weight: 400;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content p:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+
+.column-header-span {
+  cursor: pointer;
+}
+
+.spreadsheet-controls {
+  margin-left: 0.5rem;
+}
+
+.reset-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #d9534f;
+  color: #fff;
+  border-color: #d43f3a;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+.reset-btn:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}

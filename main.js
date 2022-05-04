@@ -1,5 +1,5 @@
-let defaultRowCount = 15; // No of rows
-let defaultColCount = 12; // No of cols
+let defaultRowCount = 30; // No of rows
+let defaultColCount = 140; // No of cols
 const SPREADSHEET_DB = "spreadsheet_db";
 
 initializeData = () => {
@@ -26,12 +26,13 @@ getData = () => {
 saveData = data => {
   localStorage.setItem(SPREADSHEET_DB, JSON.stringify(data));
 };
-
+  
 resetData = data => {
   localStorage.removeItem(SPREADSHEET_DB);
   this.createSpreadsheet();
 };
 
+// Row Head
 createHeaderRow = () => {
   const tr = document.createElement("tr");
   tr.setAttribute("id", "h-0");
@@ -42,15 +43,15 @@ createHeaderRow = () => {
     // th.innerHTML = i === 0 ? `` : `Col ${i}`;
     if (i !== 0) {
       const span = document.createElement("span");
-      span.innerHTML = `Col ${i}`;
+      span.innerHTML = `C_${i}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
       dropDownDiv.setAttribute("class", "dropdown");
       dropDownDiv.innerHTML = `<button class="dropbtn" id="col-dropbtn-${i}">+</button>
         <div id="col-dropdown-${i}" class="dropdown-content">
-          <p class="col-insert-left">Insert 1 column left</p>
-          <p class="col-insert-right">Insert 1 column right</p>
-          <p class="col-delete">Delete column</p>
+          <p class="col-insert-left">좌측 열 추가</p>
+          <p class="col-insert-right">우측 열 추가</p>
+          <p class="col-delete">열 삭제</p>
         </div>`;
       th.appendChild(span);
       th.appendChild(dropDownDiv);
@@ -65,23 +66,44 @@ createTableBodyRow = rowNum => {
   tr.setAttribute("id", `r-${rowNum}`);
   for (let i = 0; i <= defaultColCount; i++) {
     const cell = document.createElement(`${i === 0 ? "th" : "td"}`);
+    const span = document.createElement("span");
+    const dropDownDiv = document.createElement("div");
     if (i === 0) {
-      cell.contentEditable = false;
-      const span = document.createElement("span");
-      const dropDownDiv = document.createElement("div");
+      // cell.contentEditable = false;
       span.innerHTML = rowNum;
       dropDownDiv.setAttribute("class", "dropdown");
       dropDownDiv.innerHTML = `<button class="dropbtn" id="row-dropbtn-${rowNum}">+</button>
         <div id="row-dropdown-${rowNum}" class="dropdown-content">
-          <p class="row-insert-top">Insert 1 row above</p>
-          <p class="row-insert-bottom">Insert 1 row below</p>
-          <p class="row-delete">Delete row</p>
+          <p class="row-insert-top">상단 행 추가</p>
+          <p class="row-insert-bottom">하단 행 추가</p>
+          <p class="row-delete">행 삭제</p>
         </div>`;
       cell.appendChild(span);
       cell.appendChild(dropDownDiv);
       cell.setAttribute("class", "row-header");
     } else {
-      cell.contentEditable = true;
+      // cell.contentEditable = true;
+      const cellBtn = document.createElement("button");
+      cellBtn.innerHTML = `<ul class="cellMenu">
+        <li>
+          <label for="tagNm-${i}-${rowNum}">태그번호 :</label>
+          <input type="text" name="tagNumber" id="tagNm-${i}-${rowNum}">
+        </li>
+        <li>
+          <span>과실유무</span>
+          <input type="checkbox" name="" id="fruitYN-${i}-${rowNum}">
+          <label for="fruitYN-${i}-${rowNum}" class="toggleBtn"></label>
+        </li>
+        <li>
+          <button type="button" class="submitBtn">저장</button>
+        </li>
+        <li>
+          <button type="button" class="cancelBtn">취소</button>
+          <button type="button" class="resetBtn">초기화</button>
+        </li>
+      </ul>`;
+      cell.appendChild(cellBtn);
+      cell.setAttribute("class", "row-cell");
     }
     cell.setAttribute("id", `r-${rowNum}-${i}`);
     // cell.id = `${rowNum}-${i}`;
@@ -246,15 +268,15 @@ createSpreadsheet = () => {
   populateTable();
 
   // attach focusout event listener to whole table body container
-  tableBody.addEventListener("focusout", function(e) {
-    if (e.target && e.target.nodeName === "TD") {
-      let item = e.target;
-      const indices = item.id.split("-");
-      let spreadsheetData = getData();
-      spreadsheetData[indices[1]][indices[2]] = item.innerHTML;
-      saveData(spreadsheetData);
-    }
-  });
+  // tableBody.addEventListener("focusout", function(e) {
+  //   if (e.target && e.target.nodeName === "TD") {
+  //     let item = e.target;
+  //     const indices = item.id.split("-");
+  //     let spreadsheetData = getData();
+  //     spreadsheetData[indices[1]][indices[2]] = item.innerHTML;
+  //     saveData(spreadsheetData);
+  //   }
+  // });
 
   // Attach click event listener to table body
   tableBody.addEventListener("click", function(e) {
