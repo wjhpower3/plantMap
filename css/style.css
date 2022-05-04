@@ -63,6 +63,28 @@
   overflow: hidden;
 }
 
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.navigation label{
+  width: 3rem;
+  font-size: 1.6rem;
+}
+
+.navigation input[type=text]{
+  width: 6rem;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
 .functionBtnWrap{
   width: 100%;
   margin-bottom: 1rem;
@@ -76,7 +98,7 @@
   height: 4rem;
   background-color: #fff;
   border: 1px solid #ccc;
-
+  font-size: 1.2rem;
 }
 
 .spreadsheet {
@@ -85,6 +107,9 @@
   overflow: scroll;
 }
 
+.spreadsheet__table{
+  min-width: 100%;
+}
 
 .spreadsheet__table thead {
   background-color: #f1f1f1;
@@ -112,7 +137,13 @@
 }
 
 .spreadsheet__table tbody td {
+  position: relative;
   border: 0.5px dashed #ccc;
+}
+
+.spreadsheet__table tbody td.selected{
+  background-color: #ffaeae;
+  border: 2px dashed #ff4747;
 }
 
 .spreadsheet__table tbody td:last-child{
@@ -122,6 +153,121 @@
 .spreadsheet__table tbody tr:last-child td{
   border-bottom: 0.5px solid #000;
 }
+
+.spreadsheet__table tbody td .add-on{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.spreadsheet__table tbody td .cellMenu{
+  display: none;
+  position: absolute;
+  top: -2px;
+  left: 3rem;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.spreadsheet__table tbody td .cellMenu.on{
+  display: block;
+}
+
+.cellMenu li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.cellMenu li:last-child{
+  padding: 0 0 1rem;
+}
+
+.cellMenu li .label{
+  width: 6rem;
+  display: block;
+  line-height: 1;
+  font-size: 1.4rem;
+}
+
+.cellMenu li input[type=number]{
+  width: 5rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  border-radius: 0;
+}
+
+.cellMenu li .toggleCheckBox{
+  display: none;
+}
+
+.cellMenu li .toggleBtn{
+  width: 3.6rem;
+  height: 2rem;
+  padding: 0.2rem 0.1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  transition: all .3s;
+}
+
+.cellMenu li .toggleBtn span{
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #777;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.cellMenu li .toggleCheckBox:checked + .toggleBtn{
+  justify-content: end;
+  background-color: #afd5ff;
+  border: 1px solid #afd5ff;
+}
+
+.cellMenu li .toggleCheckBox:checked + .toggleBtn span{
+  background-color: #077af6;
+}
+
+.cellMenu li .submitBtn{
+  width: 100%;
+  height: 3rem;
+  background-color: #077af6;
+  border: 1px solid #077af6;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.cellMenu li .cancelBtn{
+  width: 45%;
+  height: 3rem;
+  background-color: #000;
+  border: 1px solid #000;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.cellMenu li .resetBtn{
+  width: 45%;
+  height: 3rem;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
 
 /* Dropdown Button */
 .dropbtn {

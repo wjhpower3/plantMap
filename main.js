@@ -1,5 +1,5 @@
-let defaultRowCount = 30; // No of rows
-let defaultColCount = 140; // No of cols
+let defaultRowCount = 20; // No of rows
+let defaultColCount = 40; // No of cols
 const SPREADSHEET_DB = "spreadsheet_db";
 
 initializeData = () => {
@@ -43,7 +43,7 @@ createHeaderRow = () => {
     // th.innerHTML = i === 0 ? `` : `Col ${i}`;
     if (i !== 0) {
       const span = document.createElement("span");
-      span.innerHTML = `C_${i}`;
+      span.innerHTML = `x-${i}`;
       span.setAttribute("class", "column-header-span");
       const dropDownDiv = document.createElement("div");
       dropDownDiv.setAttribute("class", "dropdown");
@@ -68,9 +68,10 @@ createTableBodyRow = rowNum => {
     const cell = document.createElement(`${i === 0 ? "th" : "td"}`);
     const span = document.createElement("span");
     const dropDownDiv = document.createElement("div");
+    const dropDownUl = document.createElement("ul");
     if (i === 0) {
       // cell.contentEditable = false;
-      span.innerHTML = rowNum;
+      span.innerHTML = `y-${rowNum}`;
       dropDownDiv.setAttribute("class", "dropdown");
       dropDownDiv.innerHTML = `<button class="dropbtn" id="row-dropbtn-${rowNum}">+</button>
         <div id="row-dropdown-${rowNum}" class="dropdown-content">
@@ -84,15 +85,22 @@ createTableBodyRow = rowNum => {
     } else {
       // cell.contentEditable = true;
       const cellBtn = document.createElement("button");
-      cellBtn.innerHTML = `<ul class="cellMenu">
+      cellBtn.setAttribute("id", "cell-dropbtn-x" + i + "-y" + rowNum);
+      cellBtn.setAttribute("class", "add-on");
+      cell.appendChild(cellBtn);
+      dropDownUl.setAttribute("id", "cell-dropMenu-x" + i + "-y" + rowNum);
+      dropDownUl.setAttribute("class", "cellMenu");
+      dropDownUl.innerHTML = `
         <li>
-          <label for="tagNm-${i}-${rowNum}">태그번호 :</label>
-          <input type="text" name="tagNumber" id="tagNm-${i}-${rowNum}">
+          <label for="tagNm-x${i}-y${rowNum}" class="label">태그번호 :</label>
+          <input type="number" name="tagNumber" id="tagNm-x${i}-y${rowNum}" min="0" max="999">
         </li>
         <li>
-          <span>과실유무</span>
-          <input type="checkbox" name="" id="fruitYN-${i}-${rowNum}">
-          <label for="fruitYN-${i}-${rowNum}" class="toggleBtn"></label>
+          <span class="label">과실유무</span>
+          <input type="checkbox" name="" id="fruitYN-x${i}-y${rowNum}" class="toggleCheckBox">
+          <label for="fruitYN-x${i}-y${rowNum}" class="toggleBtn">
+            <span></span>
+          </label>
         </li>
         <li>
           <button type="button" class="submitBtn">저장</button>
@@ -100,12 +108,11 @@ createTableBodyRow = rowNum => {
         <li>
           <button type="button" class="cancelBtn">취소</button>
           <button type="button" class="resetBtn">초기화</button>
-        </li>
-      </ul>`;
-      cell.appendChild(cellBtn);
+        </li>`;
+      cell.appendChild(dropDownUl);
       cell.setAttribute("class", "row-cell");
     }
-    cell.setAttribute("id", `r-${rowNum}-${i}`);
+    cell.setAttribute("id", `r-x${i}-y${rowNum}`);
     // cell.id = `${rowNum}-${i}`;
     tr.appendChild(cell);
   }
@@ -265,7 +272,7 @@ createSpreadsheet = () => {
   tableHeaders.appendChild(createHeaderRow(defaultColCount));
   createTableBody(tableBody, defaultRowCount, defaultColCount);
 
-  populateTable();
+  // populateTable();
 
   // attach focusout event listener to whole table body container
   // tableBody.addEventListener("focusout", function(e) {
@@ -298,6 +305,15 @@ createSpreadsheet = () => {
       if (e.target.className === "row-delete") {
         const indices = e.target.parentNode.id.split("-");
         deleteRow(parseInt(indices[2]));
+      }
+      if (e.target.className === "add-on") {
+        const idMenu = e.target.id.split("-");
+        let cellMenu = document.getElementsByClassName("cellMenu")
+        // console.log(cellMenu);
+        // cellMenu.classList.remove("on");
+        document
+          .getElementById(`cell-dropMenu-${idMenu[2]}-${idMenu[3]}`)
+          .classList.toggle("on");
       }
     }
   });
@@ -335,12 +351,21 @@ createSpreadsheet();
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches(".dropbtn")) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
+    let dropdowns = document.getElementsByClassName("dropdown-content");
+    let i;
     for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
+      let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains("show")) {
         openDropdown.classList.remove("show");
+      }
+    }
+  } else if (!event.target.matches(".add-on")) {
+    let dropdowns = document.getElementsByClassName("cellMenu");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("on")) {
+        openDropdown.classList.remove("on");
       }
     }
   }
@@ -352,4 +377,24 @@ document.getElementById("reset").addEventListener("click", e => {
   ) {
     this.resetData();
   }
+});
+
+$(document).ready(function(){
+
+  $('.add-on').click(function(){
+    let xNumber,
+        yNumber;
+
+    $('.row-cell').removeClass('selected');
+    $('.cellMenu').removeClass('on')
+    $(this).parent('.row-cell').toggleClass('selected');
+    let cellId = $(this).attr('id').split('-');
+    xNumber = cellId[2].substr(1);
+    yNumber = cellId[3].substr(1);
+    $('#xAxis').val(xNumber);
+    $('#yAxis').val(yNumber);
+  });
+
+
+
 });
