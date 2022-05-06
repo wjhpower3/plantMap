@@ -123,6 +123,24 @@
   font-size: 1.4rem;
 }
 
+.spreadsheet__table.view1x th,
+.spreadsheet__table.view1x td {
+  width: 3rem;
+  height: 3rem;
+}
+
+.spreadsheet__table.view2x th,
+.spreadsheet__table.view2x td {
+  width: 6rem;
+  height: 6rem;
+}
+
+.spreadsheet__table.view3x th,
+.spreadsheet__table.view3x td {
+  width: 9rem;
+  height: 9rem;
+}
+
 .spreadsheet__table th {
   font-weight: 500;
 }
@@ -139,6 +157,11 @@
 .spreadsheet__table tbody td {
   position: relative;
   border: 0.5px dashed #ccc;
+}
+
+.spreadsheet__table tbody td.cross{
+  background-color: #efefef;
+  border: 1px solid #efefef;
 }
 
 .spreadsheet__table tbody td.selected{

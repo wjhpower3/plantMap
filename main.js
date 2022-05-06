@@ -381,9 +381,33 @@ document.getElementById("reset").addEventListener("click", e => {
 
 $(document).ready(function(){
 
+  let viewBtnIndex = $('.functionBtnWrap .view').index() + 1;
+  console.log(viewBtnIndex);
+  $('.functionBtnWrap .view').click(function(){
+    let viewBtnIndex = $(this).index() + 1;
+    let btnId = $(this).attr('id');
+
+    console.log(viewBtnIndex);
+    console.log(btnId);
+    $('.spreadsheet__table').attr('class', 'spreadsheet__table');
+    if(btnId === 'view'+viewBtnIndex+'x') {      
+      $('.spreadsheet__table').addClass('view'+viewBtnIndex+'x');
+    }
+  });
+
   $('.add-on').click(function(){
     let xNumber,
         yNumber;
+
+    const cellIndex = $(this).parent().index() + 1;
+    console.log(cellIndex);
+    let tableTd = $('.spreadsheet__table--body tr td');
+    let xAxisTd = $('.spreadsheet__table--body td:nth-child(' + cellIndex + ')');
+    let yAxisTr = $(this).parent().parent().find('td');
+
+    tableTd.removeClass('cross')
+    xAxisTd.addClass('cross');
+    yAxisTr.addClass('cross');
 
     $('.row-cell').removeClass('selected');
     $('.cellMenu').removeClass('on')
