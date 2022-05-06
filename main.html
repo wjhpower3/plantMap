@@ -14,7 +14,6 @@
 	<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://kit.fontawesome.com/07af8a896d.js" crossorigin="anonymous"></script>
 	<script defer src="js/script.js"></script>
-	<script defer src="main.js"></script>
 </head>
 
 <body>
@@ -34,7 +33,7 @@
 		</section>
 
 		<section class="spreadsheet">
-			<table class="spreadsheet__table" id="table-main">
+			<table class="spreadsheet__table view1x" id="table-main">
 				<thead class="spreadsheet__table--headers" id="table-headers">
 
 				</thead>
@@ -42,13 +41,11 @@
 
 				</tbody>
 			</table>
-		</section>
-
-		
+		</section>		
 
 		<section class="spreadsheet-controls">
-			<button class="reset-btn"
-			id="reset">Reset Data</button>
+			<button class="btn resetBtn" id="reset">전체 초기화</button>
+			<button class="btn submitBtn" id="submit">저장</button>
 		</section>
 		
 	</main>	

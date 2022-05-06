@@ -58,7 +58,7 @@
 .main{
   width: 100vw;
   height: 100vh;
-  padding: 2rem 2rem 4rem 2rem;
+  padding: 2rem;
   background-color: #fff;
   overflow: hidden;
 }
@@ -103,7 +103,7 @@
 
 .spreadsheet {
   width: 100%;
-  height: calc(100vh - 12rem);
+  height: calc(100vh - 13rem);
   overflow: scroll;
 }
 
@@ -156,12 +156,20 @@
 
 .spreadsheet__table tbody td {
   position: relative;
+  background-color: #fff;
   border: 0.5px dashed #ccc;
 }
 
 .spreadsheet__table tbody td.cross{
-  background-color: #efefef;
-  border: 1px solid #efefef;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.spreadsheet__table tbody td.fruit_y{
+  background-color: #ffaa00;
+}
+
+.spreadsheet__table tbody td.fruit_n{
+  background-color: #9a9a9a;
 }
 
 .spreadsheet__table tbody td.selected{
@@ -187,8 +195,6 @@
 .spreadsheet__table tbody td .cellMenu{
   display: none;
   position: absolute;
-  top: -2px;
-  left: 3rem;
   padding: 1rem;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -197,6 +203,28 @@
 
 .spreadsheet__table tbody td .cellMenu.on{
   display: block;
+}
+
+.spreadsheet__table.view1x tbody td .cellMenu{
+  top: 3rem;
+  left: 3rem;
+}
+
+.spreadsheet__table.view2x tbody td .cellMenu{
+  top: 6rem;
+  left: 6rem;
+}
+
+.spreadsheet__table.view3x tbody td .cellMenu{
+  top: 9rem;
+  left: 9rem;
+}
+
+.spreadsheet__table tbody td .tag_no{
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  font-size: 1.4rem;
 }
 
 .cellMenu li{
@@ -230,7 +258,7 @@
   display: none;
 }
 
-.cellMenu li .toggleBtn{
+.cellMenu li .toggleCheckBox + .toggleBtn{
   width: 3.6rem;
   height: 2rem;
   padding: 0.2rem 0.1rem;
@@ -243,7 +271,7 @@
   transition: all .3s;
 }
 
-.cellMenu li .toggleBtn span{
+.cellMenu li .toggleCheckBox + .toggleBtn span{
   width: 1.6rem;
   height: 1.6rem;
   background-color: #777;
@@ -357,23 +385,24 @@
 }
 
 .spreadsheet-controls {
-  margin-left: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
 }
 
-.reset-btn {
-  padding: 0.5rem 1.5rem;
+.spreadsheet-controls .btn{
+  width: 15rem;
+  height: 3rem;
+  line-height: 1;
+  border: none;
+}
+
+.spreadsheet-controls .resetBtn{
   background-color: #d9534f;
   color: #fff;
-  border-color: #d43f3a;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: ease 0.3s;
 }
 
-.reset-btn:hover {
+.spreadsheet-controls .submitBtn{
+  background-color: #077af6;
   color: #fff;
-  background-color: #c9302c;
-  border-color: #ac2925;
 }
