@@ -120,25 +120,29 @@
   width: 3rem;
   height: 3rem;
   border: 0.5px solid #000;
-  font-size: 1.4rem;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .spreadsheet__table.view1x th,
 .spreadsheet__table.view1x td {
   width: 3rem;
   height: 3rem;
+  font-size: 1rem;
 }
 
 .spreadsheet__table.view2x th,
 .spreadsheet__table.view2x td {
   width: 6rem;
   height: 6rem;
+  font-size: 1.3rem;
 }
 
 .spreadsheet__table.view3x th,
 .spreadsheet__table.view3x td {
   width: 9rem;
   height: 9rem;
+  font-size: 1.6rem;
 }
 
 .spreadsheet__table th {

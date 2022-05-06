@@ -455,13 +455,11 @@ $(document).ready(function(){
     }
   });
 
-  let tag_no; // 
-  let fruit_yn;
 
   $('.submitBtn').click(function(){
     let thisCell = $(this).parent().parent().parent('.row-cell');
-    tag_no = thisCell.find('#tagNm-x'+ xNumber +'-y'+ yNumber +'').val();
-    fruit_yn = thisCell.find('#fruitYN-x'+ xNumber +'-y'+ yNumber +'').is(':checked');
+    let tag_no = thisCell.find('#tagNm-x'+ xNumber +'-y'+ yNumber +'').val();
+    let fruit_yn = thisCell.find('#fruitYN-x'+ xNumber +'-y'+ yNumber +'').is(':checked');
     console.log('tag_no : '+ tag_no + ', fruitYN : '+ fruit_yn);
 
     if(tag_no != false){ // 태그번호가 존재하는경우
